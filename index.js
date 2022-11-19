@@ -1,4 +1,4 @@
-console.log("Hello whats up?")
+console.log("Hello world")
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
