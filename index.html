@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Pro Moderation | Home</title>
+
+      
+    
+    <body>
+        <div class="topBar"></div>
+        <h1 class="Title">Pro Moderation</h1>
+        <a class="Support" href="https://discord.gg/DavZckjezw">Support</a>
+        <a href="src/pages/about.html">Contact</a>
+
+
+  <!---Everything below hurt's my eyes to i moved it down--->
+
+
+
+  <a id="login" style="display: block;" href="https://discord.com/api/oauth2/authorize?client_id=1097682671238398162&amp;redirect_uri=http%3A%2F%2Flocalhost%3A53134&amp;response_type=code&amp;scope=identify">Identify Yourself</a>
+  <script>
+    window.onload = () => {
+      const fragment = new URLSearchParams(window.location.hash.slice(1));
+      const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
+  
+      if (!accessToken) {
+        return (document.getElementById('login').style.display = 'block');
+      }
+  
+      fetch('https://discord.com/api/users/@me', {
+        headers: {
+          authorization: `${tokenType} ${accessToken}`,
+        },
+      })
+        .then(result => result.json())
+        .then(response => {
+          const { username, discriminator } = response;
+          document.getElementById('info').innerText += ` ${username}#${discriminator}`;
+        })
+        .catch(console.error);
+    };
+  </script>
+  <script src="src/discord-api/oauth.js"></script>
+  </body>
+</html>
