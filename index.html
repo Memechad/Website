@@ -38,7 +38,7 @@
         .then(result => result.json())
         .then(response => {
           const { username, discriminator } = response;
-          document.getElementById('login').innerText += ` ${username}#${discriminator}`;
+          document.getElementById('login').innerHTML += ` ${username}#${discriminator}`;
         })
         .catch(console.error);
     };
