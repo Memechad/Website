@@ -10,7 +10,7 @@
     
     <body>
         <div class="topBar"></div>
-        <h1 class="Title">Pro Moderation</h1>
+        <h1 id="Title" class="Title">Pro Moderation</h1>
         <a class="Support" href="https://discord.gg/DavZckjezw">Support</a>
         <a href="src/pages/about.html">Contact</a>
 
@@ -38,7 +38,7 @@
         .then(result => result.json())
         .then(response => {
           const { username, discriminator } = response;
-          document.getElementById('login').innerHTML += ` ${username}#${discriminator}`;
+          document.getElementById('Title').innerHTML += ` ${username}#${discriminator}`;
         })
         .catch(console.error);
     };
