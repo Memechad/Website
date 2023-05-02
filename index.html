@@ -6,15 +6,13 @@
     <link href="./styles.css" rel="stylesheet">
     <title>Pro Moderation | Home</title>
     <link href='https://fonts.googleapis.com/css?family=Fira Sans' rel='stylesheet'>
-      
+  </head>
     
     <body>
         <div class="topBar"></div>
         <h1 class="Title">Pro Moderation</h1>
         <a class="Support" href="https://discord.gg/DavZckjezw">Support</a>
-        <a href="src/pages/tos.html">Contact</a>
-      <div class="Users">PLACE_HOLDER</div>
-      <div class="Modeations"PLACE_HOLDER</div>
+        <a href="src/pages/about.html">Contact</a>
 
 
   <!---Everything below hurt's my eyes to i moved it down--->
@@ -22,6 +20,7 @@
 
 
   <a id="login" style="display: block;" href="https://discord.com/api/oauth2/authorize?client_id=1097682671238398162&redirect_uri=https%3A%2F%2Fsharaalt.github.io%2FWebsite%2F&response_type=code&scope=identify">Identify Yourself</a>
+  <div id="info"></div>
   <script>
     window.onload = () => {
       const fragment = new URLSearchParams(window.location.hash.slice(1));
