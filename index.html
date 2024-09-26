@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./styles.css" rel="stylesheet">
+    <title>Pro Moderation | Home</title>
+    <link href='https://fonts.googleapis.com/css?family=Fira Sans' rel='stylesheet'>
+  </head>
+    
+    <body>
+        <div class="topBar"></div>
+        <h1 id="Title" class="Title">Pro Moderation</h1>
+        <a class="Support" href="https://discord.gg/DavZckjezw">Support</a>
+        <a href="src/pages/about">Contact</a>
+
+
+  <!---Everything below hurt's my eyes to i moved it down--->
+
+
+
+  <a id="login" style="display: block;" href="https://discord.com/api/oauth2/authorize?client_id=1097682671238398162&redirect_uri=https%3A%2F%2Fsharaalt.github.io%2FWebsite%2F&response_type=code&scope=identify">Identify Yourself</a>
+  <div id="info"></div>
+  <script>
+    window.onload = () => {
+      const fragment = new URLSearchParams(window.location.hash.slice(1));
+      const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
+  
+      if (!accessToken) {
+        return (document.getElementById('login').style.display = 'block');
+      }
+  
+      fetch('https://discord.com/api/users/@me', {
+        headers: {
+          authorization: `${tokenType} ${accessToken}`,
+        },
+      })
+        .then(result => result.json())
+        .then(response => {
+          const { username, discriminator } = response;
+          document.getElementById('Title').innerHTML += ` ${username}#${discriminator}`;
+        })
+        .catch(console.error);
+    };
+  </script>
+  <script src="oauth.js"></script>
+  </body>
+</html>
